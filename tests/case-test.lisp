@@ -10,7 +10,10 @@
 (deftest simple-case-code-points
   (ok (= (simple-downcase #\A) (char-code #\a)))
   (ok (= (simple-upcase #\a) (char-code #\A)))
-  (ok (= (simple-casefold #\A) (char-code #\a))))
+  (ok (= (simple-casefold #\A) (char-code #\a)))
+  ;; U+01C5 LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON — title ≠ upper
+  (ok (= (simple-titlecase #x01C5) #x01C5))
+  (ok (= (simple-upcase #x01C5) #x01C4)))
 
 (deftest string-case-roundtrip
   (ok (string= (downcase "AbC") "abc"))

@@ -25,10 +25,11 @@
   (ok (identifier-part-p #\1)))
 
 (deftest emoji-and-pictographic
-  ;; Pass integer code points: ABCL characters are UTF-16 units, so
-  ;; (code-char #x1F600) does not round-trip the astral plane code point.
+  ;; Prefer integers / code-point-string: on ABCL, CHARACTER is a UTF-16 unit
+  ;; so (code-char #x1F600) silently truncates.
   (ok (emoji-p #x1F600))          ; 😀
   (ok (extended-pictographic-p #x1F600))
+  (ok (emoji-p (code-point-string #x1F600)))
   (ok (not (emoji-p #\A))))
 
 (deftest numeric-digit-mirror
