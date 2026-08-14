@@ -19,6 +19,8 @@
     (icu:idna-label-to-unicode label :options options))
 
   (defmethod backend-idna-map ((backend icu4j-backend) string &key std3 transitional)
-    (declare (ignore std3 transitional))
-    (backend-idna-name-to-unicode backend string :options '()))
+    (let ((opts '()))
+      (when std3 (push :std3 opts))
+      (when transitional (push :transitional opts))
+      (backend-idna-name-to-unicode backend string :options opts)))
 )
