@@ -13,12 +13,12 @@
     (icu:uset-contains-p (uset-raw set) object))
 
   (defmethod backend-uset-span ((backend icu4j-backend) set string &key (start 0) end contained)
-    (declare (ignore backend start end))
-    (icu:uset-span (uset-raw set) string :contained contained))
+    (declare (ignore backend end))
+    (icu:uset-span (uset-raw set) string :contained contained :start start))
 
   (defmethod backend-uset-span-back ((backend icu4j-backend) set string &key start end contained)
-    (declare (ignore backend start end))
-    (icu:uset-span-back (uset-raw set) string :contained contained))
+    (declare (ignore backend end))
+    (icu:uset-span-back (uset-raw set) string :contained contained :start start))
 
   (defmethod backend-uset-size ((backend icu4j-backend) set)
     (declare (ignore backend))

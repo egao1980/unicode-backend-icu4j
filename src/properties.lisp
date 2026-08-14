@@ -11,7 +11,8 @@
     (icu:int-property code-point property))
 
   (defmethod backend-script-extensions ((backend icu4j-backend) code-point)
-    (list (backend-int-property backend code-point :script)))
+    (declare (ignore backend))
+    (icu:script-extensions code-point))
 
   (defmethod backend-char-name ((backend icu4j-backend) code-point &key (choice :unicode))
     (declare (ignore backend))

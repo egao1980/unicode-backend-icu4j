@@ -16,7 +16,7 @@
 
   (defmethod backend-simple-titlecase ((backend icu4j-backend) code-point)
     (declare (ignore backend))
-    (icu:simple-to-upper code-point))
+    (icu:simple-to-title code-point))
 
   (defmethod backend-casefold ((backend icu4j-backend) string &key)
     (backend-normalize backend string :nfkc-casefold))
