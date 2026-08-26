@@ -16,7 +16,7 @@
                (:file "uset"))
   :in-order-to ((test-op (test-op "unicode-backend-icu4j/tests")))
   :properties
-  (:cl-repo (:provides ("unicode-backend-icu4j") :ci (:sources (("rove" :ql))))))
+  (:cl-repo (:provides ("unicode-backend-icu4j"))))
 
 (defsystem "unicode-backend-icu4j/tests"
   :depends-on ("unicode-backend-icu4j" "rove")
